@@ -3,5 +3,5 @@ const perfil = require('./perfil')
 
  module.exports = {
     ...usuario,
-    ...perfil,
+    ...perfil
  }

@@ -18,6 +18,10 @@ exports.up = function(knex, Promise) {
         table.string('atualPor')
         table.dateTime('dataAtual')
             .defaultTo(knex.fn.now())
+    }).then(function () {
+        return knex('pedi_prod').insert([
+            { pedido_id: 1, produto_id: 1, detalhes: 'Vermelho', quantidade: 5 }
+        ])
     })
 };
 

@@ -13,12 +13,17 @@ exports.up = function(knex, Promise) {
         table.dateTime('dataOrca')
             .defaultTo(knex.fn.now())
         table.decimal('total', 6, 2)
+        table.decimal('desconto', 6, 2)
         table.string('cadasPor')
         table.timestamp('dataCadas')
             .defaultTo(knex.fn.now())
         table.string('atualPor')
         table.dateTime('dataAtual')
             .defaultTo(knex.fn.now())
+    }).then(function () {
+        return knex('pedidos').insert([
+            { cliente_id: 1, fabrica_id: 1, preposto_id: 1, atualPor: 'Ricardo' }
+        ])
     })
 };
 

@@ -14,6 +14,10 @@ exports.up = function(knex, Promise) {
         table.string('atualPor')
         table.dateTime('dataAtual')
             .defaultTo(knex.fn.now())
+    }).then(function () {
+        return knex('produtos').insert([
+            { fabrica_id: 1, nomeProd: 'Produto tst 1', tabela1: 9.99 }
+        ])
     })
 };
 

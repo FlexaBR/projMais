@@ -13,6 +13,10 @@ exports.up = function(knex, Promise) {
         table.string('atualPor')
         table.dateTime('dataAtual')
             .defaultTo(knex.fn.now())
+    }).then(function () {
+        return knex('fabr_clie').insert([
+            { fabrica_id: 1, cliente_id: 1, preposto_id: 1, comiClie: 5 }
+        ])
     })
 };
 

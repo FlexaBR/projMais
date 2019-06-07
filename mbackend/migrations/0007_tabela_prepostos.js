@@ -15,6 +15,10 @@ exports.up = function(knex, Promise) {
         table.string('atualPor')
         table.dateTime('dataAtual')
             .defaultTo(knex.fn.now())
+    }).then(function () {
+        return knex('prepostos').insert([
+            { cidade_id: 10, nome: 'Preposto Teste 1' }
+        ])
     })
 };
 
